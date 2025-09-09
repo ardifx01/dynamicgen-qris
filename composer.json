@@ -1,0 +1,31 @@
+{
+    "name": "kodinus/dynamicgen-qris",
+    "description": "QRIS Generator & Parser (Dynamic & Static) untuk Laravel dan PHP, oleh PT Kodingin Digital Nusantara",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Kodinus\\DynamicGenQris\\": "src/"
+        }
+    },
+    "require": {
+        "php": ">=8.0",
+        "illuminate/support": "^10.0|^11.0"
+    },
+    "authors": [
+        {
+            "name": "PT Kodingin Digital Nusantara",
+            "email": "halo@kodinus.id"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Kodinus\\DynamicGenQris\\QrisServiceProvider"
+            ],
+            "aliases": {
+                "Qris": "Kodinus\\DynamicGenQris\\Facades\\Qris"
+            }
+        }
+    }
+}
