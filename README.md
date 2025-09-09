@@ -20,6 +20,18 @@ Library PHP yang powerful untuk **generate**, **parse**, dan **convert** QRIS (Q
 composer require kodinus/dynamicgen-qris
 ```
 
+### Penggunaan di Laravel
+
+Paket ini mendukung *auto-discovery* sehingga Anda bisa langsung memakai **Facade** `Qris`
+atau *dependency injection* `DynamicQRISGenerator` di dalam project Laravel Anda.
+
+```php
+use Qris; // Facade
+
+$qris = Qris::generate($merchantData, 50000);
+$data = Qris::extractMerchant($qris);
+```
+
 ## 🔧 Setup Awal
 
 ```php

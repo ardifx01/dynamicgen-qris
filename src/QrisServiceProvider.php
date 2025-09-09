@@ -16,6 +16,8 @@ class QrisServiceProvider extends ServiceProvider
         $this->app->singleton('qris.generator', function () {
             return new DynamicQRISGenerator();
         });
+
+        $this->app->alias('qris.generator', DynamicQRISGenerator::class);
     }
 
     /**
