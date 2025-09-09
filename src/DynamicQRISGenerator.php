@@ -4,6 +4,7 @@ namespace Kodinus\DynamicGenQris;
 
 use Exception;
 use InvalidArgumentException;
+use RuntimeException;
 
 /**
  * QRIS Generator & Parser
@@ -482,6 +483,29 @@ class DynamicQRISGenerator
         } catch (Exception $e) {
             return false;
         }
+    }
+
+    /**
+     * Cetak QR Code dalam bentuk teks ke terminal menggunakan bacon/bacon-qr-code.
+     *
+     * @param string $string String yang akan di-encode menjadi QR Code.
+     * @return string Representasi teks dari QR Code.
+     *
+     * @throws RuntimeException Jika dependensi bacon/bacon-qr-code tidak terpasang.
+     */
+    public function printQrCode(string $string): string
+    {
+        if (!class_exists(\BaconQrCode\Writer::class)) {
+            throw new RuntimeException('bacon/bacon-qr-code package is required. Install via composer require bacon/bacon-qr-code.');
+        }
+
+        $renderer = new \BaconQrCode\Renderer\PlainTextRenderer();
+        $writer = new \BaconQrCode\Writer($renderer);
+        $qrCode = $writer->writeString($string);
+
+        echo $qrCode . PHP_EOL;
+
+        return $qrCode;
     }
 
     /**
