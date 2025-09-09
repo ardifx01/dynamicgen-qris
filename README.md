@@ -23,7 +23,8 @@ composer require kodinus/dynamicgen-qris
 ### Penggunaan di Laravel
 
 Paket ini mendukung *auto-discovery* sehingga Anda bisa langsung memakai **Facade** `Qris`
-atau *dependency injection* `DynamicQRISGenerator` di dalam project Laravel Anda.
+atau *dependency injection* `DynamicQRISGenerator` di dalam project Laravel Anda. Paket ini
+kompatibel dengan Laravel 8.x hingga 11.x.
 
 ```php
 use Qris; // Facade
