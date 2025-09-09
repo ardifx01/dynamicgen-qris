@@ -40,4 +40,29 @@ class QrisGeneratorTest extends TestCase
         $this->assertSame(50000.0, $parsed['amount']);
         $this->assertTrue($parsed['is_dynamic']);
     }
+
+    public function test_print_qr_code_via_generator(): void
+    {
+        $generator = new DynamicQRISGenerator();
+        if (class_exists(\BaconQrCode\Writer::class)) {
+            $this->expectOutputRegex('/.+/');
+            $result = $generator->printQrCode('Hello');
+            $this->assertIsString($result);
+            $this->assertNotEmpty($result);
+        } else {
+            $this->expectException(\RuntimeException::class);
+            $generator->printQrCode('Hello');
+        }
+    }
+
+    public function test_print_qr_code_via_facade(): void
+    {
+        if (class_exists(\BaconQrCode\Writer::class)) {
+            $this->expectOutputRegex('/.+/');
+            Qris::printQrCode('Hello');
+        } else {
+            $this->expectException(\RuntimeException::class);
+            Qris::printQrCode('Hello');
+        }
+    }
 }

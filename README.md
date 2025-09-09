@@ -126,6 +126,26 @@ if ($isValid) {
 }
 ```
 
+### 7. Cetak QR Code di Terminal
+
+Untuk menampilkan QR Code langsung di terminal, instal terlebih dahulu dependensi tambahan:
+
+```bash
+composer require bacon/bacon-qr-code
+```
+
+Kemudian panggil metode `printQrCode` baik melalui instance kelas maupun Facade:
+
+```php
+// Menggunakan instance kelas
+$generator->printQrCode($dynamicQris);
+
+// Atau melalui Facade di Laravel
+Qris::printQrCode($dynamicQris);
+```
+
+Metode ini akan mencetak QR Code dalam bentuk teks ASCII ke terminal.
+
 ## 📋 Parameter Merchant Data
 
 Pastikan parameter _Merchant Data_ sesuai dengan hasil pembacaan QR Code yang ada dari QRIS milik anda.
